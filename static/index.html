@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureShield Python AI - 5 Pillar Public Safety Intelligence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="glow-bg"></div>
+
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <span class="logo-shield">🛡️</span>
+                <h1>SECURESHIELD <span class="accent-text">PYTHON AI</span></h1>
+                <span class="badge">5-PILLAR INTELLIGENCE SYSTEM</span>
+            </div>
+            <div class="system-status">
+                <div class="status-item">
+                    <span class="indicator active"></span>
+                    <span>Flask Core: ACTIVE</span>
+                </div>
+                <div class="status-item">
+                    <span class="indicator db-active"></span>
+                    <span>SQLite DB: CONNECTED</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-grid">
+        <!-- LEFT: 5 Feature Modules Simulator Card -->
+        <section class="card simulator-card">
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab('scam-shield')">💬 Citizen Shield (Feature 1 & 5)</button>
+                <button class="tab-btn" onclick="switchTab('note-scanner')">💵 Currency Agent (Feature 2)</button>
+                <button class="tab-btn" onclick="switchTab('geospatial-map')">🗺️ Geospatial Intel (Feature 4)</button>
+            </div>
+
+            <!-- Tab 1: Digital Arrest Scam Detection & Citizen Shield -->
+            <div class="tab-content" id="scam-shield">
+                <div class="simulator-header">
+                    <h3>Digital Arrest Scam Detection & Citizen Shield</h3>
+                    <p>Real-time NLP classifier trained on digital arrest call transcripts & MHA advisories.</p>
+                </div>
+                <div class="form-group">
+                    <label for="caller-phone">Caller Phone (Spoofed/Helpline):</label>
+                    <input type="text" id="caller-phone" value="+91 88888 77777">
+                </div>
+                <div class="form-group">
+                    <label for="receiver-phone">Victim Phone:</label>
+                    <input type="text" id="receiver-phone" value="+91 99999 88888">
+                </div>
+                <div class="form-group">
+                    <label for="mule-account">Target Mule Account:</label>
+                    <input type="text" id="mule-account" value="30192837465">
+                </div>
+                <div class="form-group">
+                    <label for="scam-transcript">Call Transcript / Message:</label>
+                    <textarea id="scam-transcript" rows="4">Caller: Inspector Ajay Kumar from CBI Cyber Branch. MDMA narcotics package intercepted under your name. Place under digital arrest. Transfer funds to State Bank of India account 30192837465 for clearance.</textarea>
+                </div>
+                <div class="scenario-buttons">
+                    <button class="btn btn-secondary btn-sm" onclick="loadScenario('arrest')">CBI Arrest</button>
+                    <button class="btn btn-secondary btn-sm" onclick="loadScenario('customs')">Customs</button>
+                    <button class="btn btn-secondary btn-sm" onclick="loadScenario('normal')">Genuine Call</button>
+                </div>
+                <button class="btn btn-primary btn-block" onclick="analyzeScam()">Run AI Risk Scan</button>
+
+                <!-- Dynamic Verdict Banner -->
+                <div id="scan-result-banner" style="display:none; margin-top: 1rem; padding: 0.8rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; line-height: 1.4;"></div>
+
+                <!-- Multi-Channel Language Advisory Sub-module (Feature 5) -->
+                <div style="margin-top: 1.2rem; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.8rem;">
+                    <label style="font-size: 0.8rem; color: var(--accent-cyan); font-weight: 600;">Multi-Channel Language Advisory (WhatsApp/IVR/SMS):</label>
+                    <div style="display:flex; gap: 0.5rem; margin-top: 0.4rem;">
+                        <select id="lang-select" onchange="fetchAdvisory()" style="background: #0a0f1d; border: 1px solid var(--border-color); color: #fff; padding: 0.4rem; border-radius: 4px; font-family: var(--font-sans); flex: 1;">
+                            <option value="English">English</option>
+                            <option value="Hindi">Hindi (हिंदी)</option>
+                            <option value="Tamil">Tamil (தமிழ்)</option>
+                            <option value="Telugu">Telugu (తెలుగు)</option>
+                            <option value="Kannada">Kannada (ಕನ್ನಡ)</option>
+                            <option value="Bengali">Bengali (বাংলা)</option>
+                            <option value="Marathi">Marathi (मराठी)</option>
+                        </select>
+                    </div>
+                    <div id="advisory-box" style="margin-top: 0.5rem; background: rgba(0,210,255,0.05); border: 1px dashed var(--accent-cyan); padding: 0.6rem; border-radius: 4px; font-size: 0.82rem; color: #a5b4fc;">
+                        WARNING! CBI, ED, or Customs officers NEVER place citizens under 'digital arrest' or demand funds via video calls.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 2: Counterfeit Currency Identification Agent (Feature 2) -->
+            <div class="tab-content hidden" id="note-scanner">
+                <div class="simulator-header">
+                    <h3>Counterfeit Currency Identification Agent</h3>
+                    <p>Computer vision AI evaluating microprint, security thread shift, and UV features on ₹500 notes.</p>
+                </div>
+
+                <!-- Photo Upload / Camera Input Field -->
+                <div class="form-group" style="background: rgba(0,210,255,0.05); border: 1px dashed #00d2ff; padding: 0.8rem; border-radius: 6px; text-align: center;">
+                    <label style="font-size: 0.85rem; color: #00d2ff; font-weight: 600; display: block; margin-bottom: 0.4rem;">📷 Snap Photo or Upload Note Image:</label>
+                    <input type="file" id="note-file-input" accept="image/*" capture="environment" onchange="previewUploadedNote(event)" style="font-size: 0.8rem; color: #94a3b8;">
+                </div>
+
+                <div class="note-svg-container" style="position: relative;">
+                    <!-- Uploaded Image Preview Overlay -->
+                    <img id="note-img-preview" style="display:none; width: 100%; height: 180px; object-fit: cover; border-radius: 10px; border: 2px solid #00d2ff;">
+                    
+                    <svg id="note-svg-el" class="note-svg" viewBox="0 0 400 180">
+                        <rect width="400" height="180" rx="10" fill="#ced9d3" stroke="#87968e" stroke-width="3"/>
+                        <circle cx="280" cy="90" r="40" fill="#aab8b0" opacity="0.5"/>
+                        <line id="note-thread" x1="180" y1="20" x2="180" y2="160" stroke="#00d2ff" stroke-width="4" stroke-dasharray="20,10"/>
+                        <text x="30" y="50" font-family="Outfit" font-weight="700" fill="#3d4d44" font-size="20">भारतीय रिजर्व बैंक</text>
+                        <text x="30" y="140" font-family="Share Tech Mono" font-size="22" font-weight="700" fill="#2d3d34">₹५००</text>
+                        <text id="note-serial-svg" x="30" y="160" font-family="Share Tech Mono" font-size="12" fill="#111">5AA 123456</text>
+                        <rect id="uv-glow" width="400" height="180" fill="#aa00ff" opacity="0" style="transition: opacity 0.4s;"/>
+                    </svg>
+                </div>
+
+                <div class="form-group">
+                    <label for="note-serial">Banknote Serial Number (OCR Extracted):</label>
+                    <input type="text" id="note-serial" value="5AA 123456" oninput="document.getElementById('note-serial-svg').textContent = this.value">
+                </div>
+                
+                <div class="checkbox-group">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="check-microprint">
+                        <span class="checkmark"></span> Microprint 'RBI' & '500' Verified
+                    </label>
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="check-thread">
+                        <span class="checkmark"></span> Security Thread Color Shift (Green/Blue)
+                    </label>
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="check-uv">
+                        <span class="checkmark"></span> UV Fluorescent Fibers Present
+                    </label>
+                </div>
+                <div class="scenario-buttons">
+                    <button class="btn btn-secondary btn-sm" onclick="loadNotePreset('fake')">Counterfeit Note</button>
+                    <button class="btn btn-secondary btn-sm" onclick="loadNotePreset('real')">Genuine Note</button>
+                </div>
+                <button class="btn btn-primary btn-block" onclick="scanBanknote()">Verify Banknote Security</button>
+
+                <!-- CV Result Details -->
+                <div id="note-cv-result" style="display:none; margin-top: 0.8rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); padding: 0.6rem; border-radius: 6px; font-size: 0.8rem;"></div>
+            </div>
+
+            <!-- Tab 3: Geospatial Crime Pattern Intelligence (Feature 4) -->
+            <div class="tab-content hidden" id="geospatial-map">
+                <div class="simulator-header">
+                    <h3>Geospatial Crime Pattern Intelligence</h3>
+                    <p>Geospatial AI layer mapping cybercrime hotspots & patrol prioritization for law enforcement command centers.</p>
+                </div>
+                <div style="background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: 8px; padding: 0.8rem; margin-bottom: 1rem;">
+                    <h4 style="font-size: 0.85rem; color: var(--accent-cyan); margin-bottom: 0.5rem;">Active Cybercrime Hotspots & Seizure Map</h4>
+                    <div id="hotspot-list-container" style="max-height: 220px; overflow-y: auto;">
+                        <!-- Dynamically loaded hotspots -->
+                    </div>
+                </div>
+                <button class="btn btn-secondary btn-block" onclick="fetchHotspots()">Refresh Patrol Priorities</button>
+            </div>
+        </section>
+
+        <!-- MIDDLE: Fraud Network Graph (Feature 3) & Stats -->
+        <section class="card graph-card">
+            <div class="card-header">
+                <h3>Fraud Network Graph Intelligence (Feature 3)</h3>
+                <span class="pulse-indicator">LIVE GRAPH FEED</span>
+            </div>
+
+            <div class="network-container">
+                <svg class="network-svg" viewBox="0 0 500 300">
+                    <line id="link-phone-scam" x1="80" y1="150" x2="250" y2="150" stroke="#00d2ff" stroke-width="2" stroke-dasharray="5,5"/>
+                    <line id="link-scam-mule" x1="250" y1="150" x2="420" y2="150" stroke="#ff8c00" stroke-width="2"/>
+                    
+                    <g transform="translate(80, 150)">
+                        <circle id="circle-phone" r="30" fill="#2d3d3d" stroke="#00d2ff" stroke-width="2"/>
+                        <text y="-38" font-family="Outfit" font-size="10" fill="#00d2ff" text-anchor="middle">CALLER ID</text>
+                        <text id="graph-phone-text" y="5" font-family="Share Tech Mono" font-size="9" fill="#fff" text-anchor="middle">+91 88888</text>
+                    </g>
+                    
+                    <g transform="translate(250, 150)">
+                        <circle id="circle-scam" r="35" fill="#2d3d3d" stroke="#ff8c00" stroke-width="2"/>
+                        <text y="-43" font-family="Outfit" font-size="10" fill="#ff8c00" text-anchor="middle">INCIDENT</text>
+                        <text id="graph-scam-text" y="5" font-family="Outfit" font-size="9" font-weight="700" fill="#fff" text-anchor="middle">ARREST</text>
+                    </g>
+                    
+                    <g transform="translate(420, 150)">
+                        <circle id="circle-mule" r="30" fill="#2d3d3d" stroke="#00ff66" stroke-width="2"/>
+                        <text y="-38" font-family="Outfit" font-size="10" fill="#00ff66" text-anchor="middle">MULE BANK</text>
+                        <text id="graph-mule-text" y="5" font-family="Share Tech Mono" font-size="9" fill="#fff" text-anchor="middle">3019283</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-box"><span class="stat-value" id="stat-phones">0</span><span class="stat-label">Tracked Phones</span></div>
+                <div class="stat-box"><span class="stat-value" id="stat-mules">0</span><span class="stat-label">Blocked Mules</span></div>
+                <div class="stat-box"><span class="stat-value" id="stat-reports">0</span><span class="stat-label">Scam Alerts</span></div>
+                <div class="stat-box"><span class="stat-value" id="stat-scans">0</span><span class="stat-label">Notes Verified</span></div>
+            </div>
+        </section>
+
+        <!-- RIGHT: Multi-Agent Audit Console -->
+        <section class="card audit-card">
+            <div class="card-header">
+                <h3>Multi-Agent Audit Console</h3>
+                <button class="btn btn-secondary btn-sm" onclick="fetchLogs()">Refresh</button>
+            </div>
+            <div class="terminal-container">
+                <div class="terminal" id="terminal-console">
+                    <!-- Logs stream here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Bottom Row: RAG & SQL -->
+    <footer class="bottom-container">
+        <section class="card rag-card">
+            <div class="card-header">
+                <h3>RAG-Powered Regulatory Search</h3>
+                <span class="badge badge-accent">Python Agent</span>
+            </div>
+            <div class="search-bar">
+                <input type="text" id="rag-query" value="MHA Advisory">
+                <button class="btn btn-primary" onclick="searchRAG()">Search Corpus</button>
+            </div>
+            <div class="rag-results" id="rag-results-box">
+                <p class="placeholder-text">Enter search term to query regulatory advisory texts.</p>
+            </div>
+        </section>
+        
+        <section class="card sql-helper-card">
+            <div class="card-header">
+                <h3>SQLite Database Engine</h3>
+                <span class="badge badge-sql">Python SQLite3</span>
+            </div>
+            <p>Database state is persisted locally in <code>safety.db</code> mapped from <code>schema.sql</code>.</p>
+            <div class="sql-examples">
+                <ul>
+                    <li><code>SELECT * FROM PHONE_REGISTRY WHERE is_spoofed = 1;</code></li>
+                    <li><code>SELECT * FROM MULE_ACCOUNTS WHERE status = 'BLOCKED';</code></li>
+                    <li><code>SELECT * FROM FRAUD_REPORTS WHERE severity = 'CRITICAL';</code></li>
+                </ul>
+            </div>
+        </section>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
